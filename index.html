@@ -29,7 +29,7 @@
             border-radius: 2rem;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             padding: 3rem 2rem;
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
             text-align: center;
             transition: all 0.3s ease;
@@ -121,31 +121,64 @@
             font-size: 1rem;
         }
 
-        .cta-button {
-            display: inline-block;
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0 1.5rem;
+        }
+
+        .custom-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             font-weight: 600;
             font-size: 1.2rem;
-            padding: 1rem 3rem;
+            padding: 1rem 2.5rem;
             border-radius: 60px;
             text-decoration: none;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
             box-shadow: 0 10px 20px -5px rgba(102, 126, 234, 0.5);
-            margin: 1.5rem 0 1rem;
             letter-spacing: 0.5px;
+            min-width: 220px;
         }
 
-        .cta-button:hover {
+        .custom-button i {
+            font-size: 1.3rem;
+        }
+
+        .custom-button:hover {
             background: linear-gradient(135deg, #5a67d8, #6b46a1);
             transform: translateY(-3px);
             box-shadow: 0 20px 30px -8px rgba(102, 126, 234, 0.7);
         }
 
-        .cta-button:active {
+        .custom-button:active {
             transform: translateY(0);
+        }
+
+        .verdik-button {
+            background: linear-gradient(135deg, #38a169, #2f855a);
+            box-shadow: 0 10px 20px -5px rgba(56, 161, 105, 0.5);
+        }
+
+        .verdik-button:hover {
+            background: linear-gradient(135deg, #2f855a, #276749);
+        }
+
+        .absen-button {
+            background: linear-gradient(135deg, #ecc94b, #d69e2e);
+            box-shadow: 0 10px 20px -5px rgba(236, 201, 75, 0.5);
+        }
+
+        .absen-button:hover {
+            background: linear-gradient(135deg, #d69e2e, #b7791f);
         }
 
         .footer-note {
@@ -163,7 +196,7 @@
         }
 
         /* Responsif untuk layar kecil */
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
             .welcome-container {
                 padding: 2rem 1rem;
             }
@@ -175,6 +208,14 @@
             }
             .feature-item {
                 flex: 1 1 100%;
+            }
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            .custom-button {
+                width: 100%;
+                max-width: 300px;
             }
         }
 
@@ -208,43 +249,27 @@
         </div>
 
         <!-- Deskripsi singkat -->
-        <p class="description">
-            Halo dan <strong>selamat datang</strong> di ruang digital kami. 
-            Kami adalah platform yang ramah, kreatif, dan selalu bersemangat untuk berbagi hal-hal menarik. 
-            Jelajahi, temukan inspirasi, dan mari berkolaborasi bersama!
-        </p>
-
-        <!-- Fitur unggulan (grid) -->
-        <div class="features">
-            <div class="feature-item">
-                <i class="fas fa-rocket"></i>
-                <span>Inovasi</span>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-users"></i>
-                <span>Komunitas</span>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-lightbulb"></i>
-                <span>Ide Kreatif</span>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-globe"></i>
-                <span>Jejaring</span>
-            </div>
+        
+        <!-- GROUP TOMBOL KHUSUS: VerDik dan Absensi eSDM -->
+        <div class="button-group">
+            <!-- Tombol VerDik -->
+            <a href="https://lapaste86.github.io/verdik.html" class="custom-button verdik-button" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-gavel"></i> 
+                Form Verifikasi Pendidikan
+            </a>
+            
+            <!-- Tombol Absensi eSDM -->
+            <a href="https://lapaste86.github.io/absensi.html" class="custom-button absen-button" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-calendar-check"></i> 
+                Konversi Absensi eSDM
+            </a>
         </div>
 
-        <!-- Tombol ajakan (Call to Action) -->
-        <a href="#" class="cta-button">
-            <i class="fas fa-arrow-right-to-bracket" style="margin-right: 8px;"></i>  
-            Mulai Sekarang
-        </a>
-
-        <!-- Footer kecil dengan informasi waktu/harapan -->
+        <!-- FOOTER DENGAN TEKS LA_PASTE DAN TAHUN OTOMATIS -->
         <div class="footer-note">
-            <i class="fas fa-clock"></i> 
-            <span>Terhubung 24/7 – Mari wujudkan mimpi bersama</span> 
-            <i class="fas fa-heart"></i>
+            <i class="fas fa-code"></i> La_Paste 
+            <i class="fas fa-copyright" style="font-size: 0.8rem;"></i> 
+            <span id="currentYear"></span>
         </div>
     </div>
 
@@ -269,7 +294,6 @@
             // Update judul h1 dengan sapaan
             const titleElement = document.querySelector('h1');
             if (titleElement) {
-                // kita bisa mengubah atau menambahkan, tapi agar tetap ada "Selamat Datang", kita ganti dengan greeting + ","
                 titleElement.innerHTML = `${greeting}!`;
             }
 
@@ -279,18 +303,27 @@
                 subtitleDiv.innerHTML = `<i class="fas fa-map-pin" style="color: #667eea;"></i> Senang Anda berkunjung ${now.getHours() > 17 ? 'malam ini' : (now.getHours() > 11 ? 'siang ini' : 'pagi ini')}`;
             }
 
-            // Tambahkan efek klik pada tombol
-            const btn = document.querySelector('.cta-button');
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                alert('Terima kasih! Website ini adalah demo selamat datang. Anda bisa mengembangkannya lebih lanjut.');
-                // contoh redirect jika diperlukan
-                // window.location.href = 'https://example.com';
-            });
+            // Tambahkan efek klik pada tombol CTA
+            const btn = document.getElementById('cta-button');
+            if(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('Terima kasih! Website ini adalah demo selamat datang. Anda bisa mengembangkannya lebih lanjut.');
+                });
+            }
+
+            // Peringatan jika link VerDik tidak bisa diakses (sesuai pengecekan)
+            // Ini hanya simulasi notifikasi, karena fetch tidak bisa dilakukan dari browser karena CORS
+            console.log("Catatan: Link VerDik (https://lapaste86.github.io/verdik.html) mengembalikan status 404 berdasarkan pengecekan sebelumnya. Pastikan URL sudah benar.");
+
+            // Set tahun otomatis di footer
+            const yearSpan = document.getElementById('currentYear');
+            if (yearSpan) {
+                yearSpan.textContent = now.getFullYear();
+            }
         })();
     </script>
 
-    <!-- Catatan: background particles sederhana via CSS (hiasan) bisa ditambah dengan style inline jika ingin -->
     <style>
         /* Membuat efek titik-titik di belakang (simple) */
         .bg-particles {
@@ -298,5 +331,8 @@
             background-size: 50px 50px;
         }
     </style>
+
+    <!-- Catatan kecil untuk user (tampil di browser, bukan sebagai alert) -->
+    
 </body>
 </html>
