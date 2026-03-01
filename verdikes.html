@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verdikes</title>
+    <title>VerDiKes</title>
     <style>
         :root {
-            --primary-color: #2563eb;
+            --primary-color: #3b82f6;
             --secondary-color: #10b981;
-            --bg-body: #f1f5f9;
-            --text-dark: #1e293b;
+            --bg-body: #ffffff;
+            --text-dark: #111827;
         }
 
         body { 
@@ -20,40 +20,40 @@
 
         /* --- UI DASHBOARD --- */
         .no-print { 
-            background: #ffffff; padding: 40px; border-radius: 0 0 25px 25px; 
+            background: #ffffff; padding: 40px; border-radius: 0; 
             margin: 0 auto 30px auto; max-width: 1000px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center;
+            box-shadow: none; text-align: center;
         }
 
-        h1.main-title { color: var(--primary-color); margin-bottom: 10px; font-size: 24px; font-weight: 700; }
-        .guide-text { color: #64748b; font-size: 14px; margin-bottom: 30px; }
+        h1.main-title { color: #000000; margin-bottom: 10px; font-size: 24px; font-weight: 600; letter-spacing: -0.5px; }
+        .guide-text { color: #6b7280; font-size: 14px; margin-bottom: 30px; }
 
         .card-input {
-            background: #f8fafc; border: 1px solid #e2e8f0;
-            padding: 20px; border-radius: 15px; margin-bottom: 25px;
+            background: #ffffff; border: 1px solid #e5e7eb;
+            padding: 20px; border-radius: 8px; margin-bottom: 25px;
         }
 
         .input-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .input-group input { 
-            padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; 
-            width: 250px; font-size: 14px; outline: none;
+            padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 6px; 
+            width: 250px; font-size: 14px; outline: none; background: #ffffff;
         }
-        .input-group input:focus { border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
+        .input-group input:focus { border-color: #000000; box-shadow: 0 0 0 1px #000000; }
 
         #dropZone { 
-            border: 2px dashed #3498db; background: #f0f9ff; padding: 35px; border-radius: 15px; 
-            cursor: pointer; color: #3b82f6; text-align: center; transition: 0.3s;
+            border: 2px dashed #9ca3af; background: #f9fafb; padding: 35px; border-radius: 8px; 
+            cursor: pointer; color: #1f2937; text-align: center; transition: 0.2s;
         }
-        #dropZone:hover { background: #e0f2fe; border-color: #2563eb; }
-        #dropZone p { margin: 10px 0 0 0; font-weight: 500; }
+        #dropZone:hover { background: #f3f4f6; border-color: #4b5563; }
+        #dropZone p { margin: 10px 0 0 0; font-weight: 400; }
 
-        .action-area { margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 30px; }
+        .action-area { margin-top: 40px; border-top: 1px solid #e5e7eb; padding-top: 30px; }
 
-        .btn { padding: 14px 32px; font-weight: 600; border: none; border-radius: 10px; cursor: pointer; font-size: 15px; transition: 0.2s; display: inline-flex; align-items: center; gap: 8px; }
-        .btn-generate { background: var(--primary-color); color: white; box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2); }
-        .btn-generate:hover { background: #1d4ed8; transform: translateY(-2px); }
-        .btn-save { background: var(--secondary-color); color: white; margin-left: 10px; box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2); }
-        .btn-save:hover { background: #059669; transform: translateY(-2px); }
+        .btn { padding: 14px 32px; font-weight: 500; border: 1px solid #000000; border-radius: 6px; cursor: pointer; font-size: 15px; transition: 0.2s; display: inline-flex; align-items: center; gap: 8px; background: #ffffff; color: #000000; }
+        .btn-generate { background: #000000; color: #ffffff; border: 1px solid #000000; }
+        .btn-generate:hover { background: #333333; }
+        .btn-save { background: #ffffff; color: #000000; margin-left: 10px; }
+        .btn-save:hover { background: #f3f4f6; }
 
         /* --- PRINT LAYOUT --- */
         .page-container { 
@@ -62,19 +62,18 @@
         }
         .page-container:last-child { page-break-after: auto; }
 
-        .kop-surat { display: flex; align-items: center; border-bottom: 2.5px solid #000; padding-bottom: 8px; margin-bottom: 10px; }
+        .kop-surat { display: flex; align-items: center; border-bottom: 2px solid #000000; padding-bottom: 8px; margin-bottom: 10px; }
         .logo-box { width: 55px; flex-shrink: 0; }
         .logo-box img { width: 100%; }
         .header-text { text-align: center; flex-grow: 1; }
-        .header-text h2 { margin: 0; font-size: 13px; text-transform: uppercase; color: black; }
-        .header-text .school-name { margin: 3px 0; font-size: 16px; font-weight: 800; text-transform: uppercase; color: black; }
+        .header-text h2 { margin: 0; font-size: 13px; text-transform: uppercase; color: black; font-weight: 400; }
+        .header-text .school-name { margin: 3px 0; font-size: 16px; font-weight: 700; text-transform: uppercase; color: black; }
         
-        table { width: 100%; border-collapse: collapse; table-layout: auto; border: 1.5px solid black; }
+        table { width: 100%; border-collapse: collapse; table-layout: auto; border: 1px solid #000000; }
         thead { display: table-header-group; } 
-        th, td { border: 1px solid black; padding: 4px 6px; font-size: 8.5px; white-space: nowrap; color: black; }
-        th { background-color: #e5e7eb !important; font-weight: bold; -webkit-print-color-adjust: exact; }
-        tbody tr:nth-child(even) { background-color: #f2f2f2 !important; -webkit-print-color-adjust: exact; }
-        tbody tr:nth-child(odd) { background-color: #ffffff !important; -webkit-print-color-adjust: exact; }
+        th, td { border: 1px solid #000000; padding: 4px 6px; font-size: 8.5px; white-space: nowrap; color: black; }
+        th { background-color: #ffffff !important; font-weight: 600; -webkit-print-color-adjust: exact; }
+        tbody tr { background-color: #ffffff !important; -webkit-print-color-adjust: exact; }
 
         .col-auto { text-align: left; }
         .col-narrow { width: 32px; min-width: 32px; text-align: center; }
@@ -87,36 +86,55 @@
         .space { height: 45px; } 
         .date-line { margin-bottom: 5px !important; }
 
+        /* Footer dengan teks yang jelas terlihat */
+        .page-footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 10px;
+            color: #000000;
+            border-top: 1px solid #000000;
+            padding-top: 8px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
         @media print {
             .no-print { display: none !important; }
             body { background: white; margin: 0; padding: 0; }
             @page { size: A4 landscape; margin: 0.5cm; }
             .page-container { box-shadow: none; border: none; width: 100%; }
             * { -webkit-print-color-adjust: exact; print-color-adjust: exact; color: black !important; }
+            .page-footer { 
+                color: #000000 !important; 
+                border-top: 1px solid #000000 !important;
+            }
         }
     </style>
 </head>
 <body>
 
 <div class="no-print">
-        <div class="card-input">
+    <h1 class="main-title"></h1>
+    <p class="guide-text"></p>
+
+    <div class="card-input">
         <div class="input-group">
-            <input type="text" id="kabupatenInput" placeholder="📍 Kabupaten / Kota" />
-            <input type="text" id="namaPendampingInput" placeholder="✍️ Nama Pendamping (TTD)" />
-            <input type="text" id="nipPendampingInput" placeholder="🆔 NIP Pendamping" />
+            <input type="text" id="kabupatenInput" placeholder="Kabupaten / Kota" />
+            <input type="text" id="namaPendampingInput" placeholder="Nama Pendamping" />
+            <input type="text" id="nipPendampingInput" placeholder="NIP Pendamping" />
         </div>
     </div>
 
     <div id="dropZone">
-        <div style="font-size: 40px;">📂</div>
-        <p id="dropText">Pilih File</p>
+        <div style="font-size: 40px;">📄</div>
+        <p id="dropText">Silahkan upload file disini</p>
         <input type="file" id="csvFiles" accept=".csv" multiple style="display: none;" />
-        <div id="fileStatus" style="margin-top:12px; font-size:14px; color:#059669; font-weight:bold;"></div>
+        <div id="fileStatus" style="margin-top:12px; font-size:14px; color:#000000; font-weight:normal;"></div>
     </div>
 
     <div class="action-area">
-        <button onclick="processMassiveCSVs()" class="btn btn-generate">⚙️ GENERATE FORM</button>
-        <button onclick="saveAsPDF()" class="btn btn-save">💾 SIMPAN PDF / CETAK</button>
+        <button onclick="processMassiveCSVs()" class="btn btn-generate">GENERATE</button>
+        <button onclick="saveAsPDF()" class="btn btn-save">SIMPAN PDF / CETAK</button>
     </div>
 </div>
 
@@ -142,7 +160,7 @@
     function handleFiles(files) {
         selectedFiles = Array.from(files);
         if (selectedFiles.length > 0) {
-            document.getElementById('fileStatus').innerText = "✅ " + selectedFiles.length + " File Siap";
+            document.getElementById('fileStatus').innerText = "✓ " + selectedFiles.length + " file siap";
         }
     }
 
@@ -154,7 +172,7 @@
         
         if (selectedFiles.length === 0) return alert("Pilih file CSV!");
         
-        outputArea.innerHTML = '<p style="text-align:center;" class="no-print">Memproses data sekolah...</p>'; 
+        outputArea.innerHTML = '<p style="text-align:center;" class="no-print">Memproses data...</p>'; 
         let finalHtml = '';
         processedData = [];
         
@@ -228,16 +246,18 @@
                 <td class="col-auto" style="font-size:7.5px;">${s.pendamping}</td>
             </tr>`).join('');
 
+        const currentYear = new Date().getFullYear();
+
         return `
         <div class="page-container">
             <div class="kop-surat">
-                <div class="logo-box"><img src=" kemensos.png"></div>
+                <div class="logo-box"><img src="Logo1.png"></div>
                 <div class="header-text">
                     <h2>Form Verifikasi Komitmen Pendidikan</h2>
                     <p class="school-name">${data.info.nama}</p>
-                    <p style="font-size:10px; font-weight:normal;">NPSN: ${data.info.npsn}</p>
+                    <p style="font-size:11px; font-weight:normal;">NPSN: ${data.info.npsn}</p>
                 </div>
-                <div class="logo-box"><img src="15854234115187.png"></div>
+                <div class="logo-box"><img src="Logo2.png"></div>
             </div>
             <table>
                 <thead>
@@ -270,6 +290,11 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Footer dengan teks hitam pekat dan border hitam -->
+            <div class="page-footer">
+                La_Paste © ${currentYear}
+            </div>
         </div>`;
     }
 
@@ -287,4 +312,3 @@
 </script>
 </body>
 </html>
-
