@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Si-Cerdik KPM PKH</title>
+    <title>Verdikes</title>
     <style>
         :root {
             --primary-color: #2563eb;
@@ -99,10 +99,7 @@
 <body>
 
 <div class="no-print">
-    <h1 class="main-title">✨ SI-CERDIK PKH</h1>
-    <p class="guide-text">Sistem Cetak Formulir Verifikasi Pendidikan PKH - Praktis, Cepat, dan Rapi</p>
-
-    <div class="card-input">
+        <div class="card-input">
         <div class="input-group">
             <input type="text" id="kabupatenInput" placeholder="📍 Kabupaten / Kota" />
             <input type="text" id="namaPendampingInput" placeholder="✍️ Nama Pendamping (TTD)" />
@@ -112,7 +109,7 @@
 
     <div id="dropZone">
         <div style="font-size: 40px;">📂</div>
-        <p id="dropText">Tarik & Lepaskan File CSV di sini atau Klik untuk Pilih</p>
+        <p id="dropText">Pilih File</p>
         <input type="file" id="csvFiles" accept=".csv" multiple style="display: none;" />
         <div id="fileStatus" style="margin-top:12px; font-size:14px; color:#059669; font-weight:bold;"></div>
     </div>
@@ -238,7 +235,7 @@
                 <div class="header-text">
                     <h2>Form Verifikasi Komitmen Pendidikan</h2>
                     <p class="school-name">${data.info.nama}</p>
-                    <p style="font-size:10px; font-weight:normal;">NPSN: ${data.info.npsn} | Periode: Oktober - Desember 2025</p>
+                    <p style="font-size:10px; font-weight:normal;">NPSN: ${data.info.npsn}</p>
                 </div>
                 <div class="logo-box"><img src="15854234115187.png"></div>
             </div>
@@ -290,3 +287,4 @@
 </script>
 </body>
 </html>
+
