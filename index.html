@@ -297,11 +297,7 @@
                 titleElement.innerHTML = `${greeting}!`;
             }
 
-            // Update subtitle dengan pesan ramah
-            const subtitleDiv = document.querySelector('.subtitle');
-            if (subtitleDiv) {
-                subtitleDiv.innerHTML = `<i class="fas fa-map-pin" style="color: #667eea;"></i> Senang Anda berkunjung ${now.getHours() > 17 ? 'malam ini' : (now.getHours() > 11 ? 'siang ini' : 'pagi ini')}`;
-            }
+
 
             // Tambahkan efek klik pada tombol CTA
             const btn = document.getElementById('cta-button');
