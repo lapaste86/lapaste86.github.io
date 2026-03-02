@@ -167,7 +167,7 @@
     async function processMassiveCSVs() {
         const outputArea = document.getElementById('outputArea');
         const kabupaten = document.getElementById('kabupatenInput').value.trim() || "....................";
-        const namaP = document.getElementById('namaPendampingInput').value.trim() || "..........................................";
+        const namaP = document.getElementById('namaPendampingInput').value.trim() || "__________________________";
         const nipP = document.getElementById('nipPendampingInput').value.trim();
         
         if (selectedFiles.length === 0) return alert("Pilih file CSV!");
@@ -278,7 +278,7 @@
                         <p>Pendamping PKH</p>
                         <div class="space"></div>
                         <p><u><strong>${namaP.toUpperCase()}</strong></u></p>
-                        <p>NIP. ${nipP || "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"}</p>
+                        <p>NIP. ${nipP || "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"}</p>
                     </div>
 
                     <div class="signature-box">
@@ -286,7 +286,7 @@
                         <p>Kepala Sekolah / Verifikator</p>
                         <div class="space"></div>
                         <p><strong>__________________________</strong></p>
-                        <p>NIP.&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</p>
+                        <p>NIP.&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</p>
                     </div>
                 </div>
             </div>
@@ -309,6 +309,7 @@
 </script>
 </body>
 </html>
+
 
 
 
