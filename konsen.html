@@ -24,15 +24,15 @@
             max-width: 1400px;
             margin: 0 auto;
             background: #ffffff;
-            border-radius: 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
             overflow: hidden;
             border: 1px solid #e0e0e0;
             width: 100%;
         }
         
         .header {
-            background: #fafafa;
+            background: #ffffff;
             color: #333333;
             padding: 28px 30px;
             text-align: center;
@@ -44,12 +44,12 @@
             margin-bottom: 8px;
             font-weight: 400;
             color: #222222;
-            letter-spacing: 0.5px;
+            letter-spacing: -0.02em;
         }
         
         .header p {
             font-size: 1em;
-            color: #666666;
+            color: #777777;
         }
         
         .content {
@@ -60,7 +60,7 @@
         /* Upload Section */
         .upload-section {
             background: #fafafa;
-            border-radius: 0;
+            border-radius: 12px;
             padding: 30px;
             margin-bottom: 30px;
             border: 1px solid #e0e0e0;
@@ -77,13 +77,13 @@
             width: 50px;
             height: 50px;
             background: #eaeaea;
-            border-radius: 0;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 22px;
             color: #555555;
-            border: 1px solid #d0d0d0;
+            border: none;
         }
         
         .upload-header-title {
@@ -105,11 +105,11 @@
         .upload-header-title p span {
             background: #eaeaea;
             padding: 4px 12px;
-            border-radius: 0;
+            border-radius: 20px;
             color: #555555;
             font-size: 0.85em;
             margin-right: 10px;
-            border: 1px solid #d0d0d0;
+            border: none;
         }
         
         .file-input-wrapper {
@@ -135,24 +135,24 @@
             justify-content: center;
             gap: 10px;
             padding: 16px 48px;
-            background: #eaeaea;
+            background: #ffffff;
             color: #333333;
-            border-radius: 0;
+            border-radius: 40px;
             cursor: pointer;
             font-weight: 400;
             font-size: 1.1em;
             transition: all 0.2s ease;
             border: 1px solid #cccccc;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
         
         .file-label:hover {
-            background: #dddddd;
+            background: #f5f5f5;
             border-color: #aaaaaa;
         }
         
         .file-label:active {
-            transform: translateY(1px);
-            background: #d0d0d0;
+            background: #e8e8e8;
         }
         
         .supported-formats {
@@ -164,18 +164,19 @@
         }
         
         .format-badge {
-            background: #f5f5f5;
+            background: #f0f0f0;
             padding: 6px 16px;
-            border-radius: 0;
+            border-radius: 30px;
             color: #666666;
             font-size: 0.9em;
-            border: 1px solid #d0d0d0;
+            border: none;
+            font-weight: 400;
         }
         
         /* Progress indicator */
         .progress-elegant {
             background: #fafafa;
-            border-radius: 0;
+            border-radius: 12px;
             padding: 22px;
             margin-top: 25px;
             border: 1px solid #e0e0e0;
@@ -192,13 +193,13 @@
             width: 42px;
             height: 42px;
             background: #eaeaea;
-            border-radius: 0;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 18px;
             color: #555555;
-            border: 1px solid #d0d0d0;
+            border: none;
         }
         
         .progress-title {
@@ -213,14 +214,14 @@
         }
         
         .progress-title p {
-            color: #888888;
+            color: #777777;
             font-size: 0.85em;
         }
         
         .progress-bar-elegant {
             height: 6px;
             background: #e0e0e0;
-            border-radius: 0;
+            border-radius: 30px;
             overflow: hidden;
             margin: 18px 0;
         }
@@ -228,7 +229,7 @@
         .progress-fill-elegant {
             height: 100%;
             background: #666666;
-            border-radius: 0;
+            border-radius: 30px;
             transition: width 0.3s ease;
         }
         
@@ -236,13 +237,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: #888888;
+            color: #777777;
             font-size: 0.9em;
         }
         
         .progress-percent {
             font-weight: 500;
-            color: #444444;
+            color: #333333;
         }
         
         /* Info Bar - Abu & Putih */
@@ -250,7 +251,7 @@
             display: flex;
             gap: 40px;
             background: #fafafa;
-            border-radius: 0;
+            border-radius: 10px;
             padding: 18px 30px;
             margin-bottom: 25px;
             border: 1px solid #e0e0e0;
@@ -264,18 +265,17 @@
         }
         
         .info-label {
-            font-size: 1em;
+            font-size: 0.95em;
             color: #777777;
             font-weight: 500;
-            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
         
         .info-value {
-            font-size: 1em;
+            font-size: 1.1em;
             color: #333333;
-            font-weight: 400;
-            text-transform: uppercase;
-            border-bottom: 1px dotted #cccccc;
+            font-weight: 500;
+            border-bottom: 2px dotted #aaaaaa;
             padding-bottom: 2px;
         }
         
@@ -290,15 +290,20 @@
         .info-card {
             background: #fafafa;
             padding: 25px 20px;
-            border-radius: 0;
+            border-radius: 12px;
             border: 1px solid #e0e0e0;
             text-align: center;
+            transition: background 0.2s ease;
+        }
+        
+        .info-card:hover {
+            background: #f5f5f5;
         }
         
         .info-card h3 {
             color: #777777;
             margin-bottom: 15px;
-            font-size: 1em;
+            font-size: 0.95em;
             font-weight: 500;
             letter-spacing: 0.5px;
             text-transform: uppercase;
@@ -312,16 +317,16 @@
             color: #333333;
         }
         
-        /* Buttons */
+        /* Buttons - Abu & Putih */
         .btn {
             padding: 12px 28px;
             border: none;
-            border-radius: 0;
+            border-radius: 40px;
             font-size: 1em;
             font-weight: 400;
             cursor: pointer;
-            transition: all 0.15s ease;
-            background: #eaeaea;
+            transition: all 0.2s ease;
+            background: #ffffff;
             color: #333333;
             border: 1px solid #cccccc;
         }
@@ -339,7 +344,7 @@
         }
         
         .btn:hover {
-            background: #dddddd;
+            background: #f5f5f5;
         }
         
         .btn-primary:hover {
@@ -351,20 +356,19 @@
         }
         
         .btn:active {
-            transform: translateY(1px);
+            background: #e0e0e0;
         }
         
         .btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
-            transform: none;
         }
         
-        /* Table */
+        /* Table - Clean */
         .table-container {
             background: #ffffff;
-            border-radius: 0;
-            overflow-x: auto;
+            border-radius: 12px;
+            overflow: hidden;
             border: 1px solid #e0e0e0;
             margin: 25px 0;
         }
@@ -378,26 +382,20 @@
         th {
             background: #f5f5f5;
             color: #555555;
-            padding: 14px 12px;
+            padding: 16px 12px;
             font-weight: 500;
             text-align: left;
-            border-bottom: 1px solid #d0d0d0;
-            border-right: 1px solid #e0e0e0;
-        }
-        
-        th:last-child {
+            border-bottom: 2px solid #dddddd;
             border-right: none;
+            font-size: 0.9em;
+            letter-spacing: 0.3px;
         }
         
         td {
-            padding: 12px;
+            padding: 14px 12px;
             border-bottom: 1px solid #eeeeee;
-            border-right: 1px solid #f0f0f0;
-            color: #444444;
-        }
-        
-        td:last-child {
             border-right: none;
+            color: #444444;
         }
         
         tr:hover {
@@ -408,17 +406,17 @@
             border-bottom: none;
         }
         
-        /* Action Bar - Bottom - MODIFIED: center alignment */
+        /* Action Bar - Bottom */
         .action-bar-bottom {
             display: flex;
             gap: 20px;
-            justify-content: center; /* changed from flex-end to center */
+            justify-content: center;
             margin-top: 30px;
             padding-top: 20px;
             border-top: 1px solid #e0e0e0;
         }
         
-        /* Modal */
+        /* Modal - Abu & Putih */
         .modal {
             display: none;
             position: fixed;
@@ -434,11 +432,11 @@
             background-color: #ffffff;
             margin: 15% auto;
             padding: 32px;
-            border-radius: 0;
+            border-radius: 16px;
             width: 90%;
             max-width: 450px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            border: 1px solid #cccccc;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #dddddd;
         }
         
         .modal-content h3 {
@@ -447,30 +445,32 @@
             color: #333333;
             font-size: 1.4em;
             border-bottom: 1px solid #eeeeee;
-            padding-bottom: 8px;
+            padding-bottom: 12px;
         }
         
         .modal-content p {
             color: #777777;
             margin-bottom: 28px;
             font-size: 1em;
+            line-height: 1.5;
         }
         
-        /* Toast */
+        /* Toast - Abu & Putih */
         .toast {
             position: fixed;
             bottom: 30px;
             right: 30px;
             background: #ffffff;
             padding: 16px 30px;
-            border-radius: 0;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             display: none;
             border-left: 4px solid #666666;
             z-index: 1001;
             font-size: 1em;
             color: #333333;
-            border: 1px solid #e0e0e0;
+            border: 1px solid #dddddd;
+            font-weight: 400;
         }
         
         /* History Section */
@@ -480,34 +480,37 @@
             font-weight: 400;
             font-size: 1.4em;
             border-bottom: 1px solid #e0e0e0;
-            padding-bottom: 10px;
+            padding-bottom: 16px;
             margin-bottom: 0;
             background: #fafafa;
+            padding: 20px;
         }
         
-        /* Footer Style - NEW */
+        /* Footer Style - Abu & Putih */
         .app-footer {
             text-align: center;
             margin-top: 20px;
-            padding: 20px 10px;
+            padding: 24px 10px;
             color: #777777;
             font-size: 0.95em;
             border-top: 1px solid #e0e0e0;
-            background: #fafafa;
+            background: #ffffff;
             max-width: 1400px;
             margin-left: auto;
             margin-right: auto;
             width: 100%;
             border: 1px solid #e0e0e0;
+            border-radius: 12px;
         }
         
         .app-footer span {
             font-weight: 400;
             letter-spacing: 0.3px;
+            color: #555555;
         }
         
         .app-footer .footer-heart {
-            color: #888888;
+            color: #999999;
             margin: 0 4px;
         }
         
@@ -542,12 +545,12 @@
             
             .action-bar-bottom {
                 flex-direction: column;
-                align-items: center; /* tambahan untuk mobile */
+                align-items: center;
             }
             
             .btn {
                 width: 100%;
-                max-width: 300px; /* agar tombol tidak terlalu lebar di mobile */
+                max-width: 300px;
             }
             
             .info-panel {
@@ -560,6 +563,46 @@
                 padding: 15px 10px;
             }
         }
+
+        /* Scrollbar custom - grayscale */
+        .table-container::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+
+        .table-container::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        .table-container::-webkit-scrollbar-thumb {
+            background: #999999;
+            border-radius: 10px;
+        }
+
+        .table-container::-webkit-scrollbar-thumb:hover {
+            background: #777777;
+        }
+
+        /* Additional grayscale touches */
+        hr {
+            border: none;
+            border-top: 1px solid #e0e0e0;
+            margin: 20px 0;
+        }
+
+        input, select, textarea {
+            border: 1px solid #dddddd;
+            border-radius: 8px;
+            padding: 10px;
+            background: #ffffff;
+            color: #333333;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #999999;
+        }
     </style>
     
     <!-- Library untuk membaca Excel -->
@@ -569,28 +612,27 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Konversi Absensi eSDM</h1>
+        <div class="header">            
         </div>
         
         <div class="content">
             <!-- Upload Section -->
             <div class="upload-section">
                 <div class="upload-header">
-                    </center>
+                
                 </div>
                 
                 <div class="file-input-wrapper">
                     <input type="file" id="fileInput" class="file-input" accept=".xls,.xlsx,.xlsm,.csv">
                     <label for="fileInput" class="file-label" id="fileLabel">
-                        Upload File
+                        <span>📁</span> Pilih File
                     </label>
                     
                     <div class="supported-formats">
-                        <span class="format-badge">.XLS</span>
-                        <span class="format-badge">.XLSX</span>
-                        <span class="format-badge">.XLSM</span>
-                        <span class="format-badge">.CSV</span>
+                        <span class="format-badge">XLS</span>
+                        <span class="format-badge">XLSX</span>
+                        <span class="format-badge">XLSM</span>
+                        <span class="format-badge">CSV</span>
                     </div>
                 </div>
                 
@@ -666,15 +708,19 @@
                 </table>
             </div>
             
-            <!-- Action Bar - Bottom (now centered) -->
+            <!-- Action Bar - Bottom -->
             <div class="action-bar-bottom" id="actionBar" style="display: none;">
-                <button class="btn btn-primary" onclick="exportToExcel()">Export ke Excel</button>
-                <button class="btn btn-danger" onclick="clearData()">Hapus Data</button>
+                <button class="btn btn-primary" onclick="exportToExcel()">
+                    <span>📥</span> Export ke Excel
+                </button>
+                <button class="btn btn-danger" onclick="clearData()">
+                    <span>🗑️</span> Hapus Data
+                </button>
             </div>
             
             <!-- History Section -->
             <div class="table-container" id="historyContainer" style="display: none; margin-top: 30px;">
-                <h3 style="padding: 18px; margin: 0; background: #fafafa; border-bottom: 1px solid #e0e0e0; font-weight: 400;">Riwayat Konversi</h3>
+                <h3 style="margin: 0; background: #fafafa;">Riwayat Konversi</h3>
                 <table id="historyTable">
                     <thead>
                         <tr>
@@ -707,7 +753,7 @@
     <!-- Toast Notification -->
     <div id="toast" class="toast"></div>
     
-    <!-- Footer - NEW: Auto-updating year and La_Paste text -->
+    <!-- Footer -->
     <div class="app-footer">
         <span>La_Paste © <span id="currentYear"></span></span>        
     </div>
@@ -729,6 +775,33 @@
             'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
             'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
         ];
+        
+        // Mapping untuk konversi dari bahasa Inggris ke Indonesia
+        const bulanInggrisKeIndonesia = {
+            'january': 'Januari', 
+            'february': 'Februari', 
+            'march': 'Maret', 
+            'april': 'April',
+            'may': 'Mei', 
+            'june': 'Juni', 
+            'july': 'Juli', 
+            'august': 'Agustus',
+            'september': 'September', 
+            'october': 'Oktober', 
+            'november': 'November', 
+            'december': 'Desember',
+            'jan': 'Januari', 
+            'feb': 'Februari', 
+            'mar': 'Maret', 
+            'apr': 'April',
+            'jun': 'Juni', 
+            'jul': 'Juli', 
+            'aug': 'Agustus', 
+            'sep': 'September',
+            'oct': 'Oktober', 
+            'nov': 'November', 
+            'dec': 'Desember'
+        };
         
         // Initialize localStorage data
         function loadHistory() {
@@ -983,8 +1056,10 @@
                 
                 // Detect periode
                 if (cellValue.includes('absensi')) {
-                    currentPeriode = cellValue.replace(/absensi\s*:?\s*/i, '').trim();
-                    parsePeriode(currentPeriode);
+                    let periodeText = cellValue.replace(/absensi\s*:?\s*/i, '').trim();
+                    // Konversi ke Indonesia sebelum disimpan
+                    currentPeriode = konversiBulanKeIndonesia(periodeText);
+                    parsePeriode(periodeText); // Parse dari teks asli untuk dapat bulan dan tahun
                 }
                 
                 // Juga cek di kolom lain jika perlu
@@ -1006,17 +1081,34 @@
             }
         }
         
-        // Parse period
+        // Fungsi baru untuk konversi bulan Inggris ke Indonesia tanpa mengubah teks lain
+        function konversiBulanKeIndonesia(teks) {
+            let teksLower = teks.toLowerCase();
+            let teksHasil = teks; // Mulai dengan teks asli
+            
+            // Cari dan ganti nama bulan Inggris dengan Indonesia
+            for (const [eng, ind] of Object.entries(bulanInggrisKeIndonesia)) {
+                // Gunakan regex dengan flag 'i' untuk case insensitive
+                const regex = new RegExp('\\b' + eng + '\\b', 'gi');
+                if (regex.test(teksLower)) {
+                    teksHasil = teksHasil.replace(regex, ind);
+                }
+            }
+            
+            return teksHasil;
+        }
+        
+        // Parse period - FIXED: sekarang tidak mengubah currentPeriode
         function parsePeriode(periode) {
             const months = {
-                'januari': 1, 'jan': 1, 'january': 1,
-                'februari': 2, 'feb': 2, 'february': 2,
-                'maret': 3, 'mar': 3, 'march': 3,
+                'januari': 1, 'jan': 1,
+                'februari': 2, 'feb': 2,
+                'maret': 3, 'mar': 3,
                 'april': 4, 'apr': 4,
-                'mei': 5, 'may': 5,
-                'juni': 6, 'jun': 6, 'june': 6,
-                'juli': 7, 'jul': 7, 'july': 7,
-                'agustus': 8, 'agu': 8, 'aug': 8, 'august': 8,
+                'mei': 5,
+                'juni': 6, 'jun': 6,
+                'juli': 7, 'jul': 7,
+                'agustus': 8, 'agu': 8, 'ags': 8, 'aug': 8, 'august': 8,
                 'september': 9, 'sep': 9,
                 'oktober': 10, 'okt': 10, 'oct': 10, 'october': 10,
                 'november': 11, 'nov': 11,
@@ -1028,14 +1120,14 @@
             for (const part of parts) {
                 const cleanPart = part.replace(/[^a-zA-Z0-9]/g, '');
                 
-                // Check for year
+                // Check for year (4 digits)
                 if (cleanPart.length === 4 && !isNaN(cleanPart)) {
                     currentTahun = parseInt(cleanPart);
                 }
                 
                 // Check for month
                 for (const [key, value] of Object.entries(months)) {
-                    if (cleanPart.includes(key.substring(0, 3))) {
+                    if (cleanPart.includes(key)) {
                         currentBulan = value;
                         break;
                     }
@@ -1048,7 +1140,7 @@
             return bulanIndonesia[bulanAngka - 1] || 'Januari';
         }
         
-        // Format periode
+        // Format periode - FIXED: hanya format ulang jika perlu
         function formatPeriodeDisplay() {
             if (currentPeriode && currentPeriode !== '-') {
                 return currentPeriode;
@@ -1122,15 +1214,17 @@
                 const actionCell = row.insertCell();
                 const loadBtn = document.createElement('button');
                 loadBtn.className = 'btn btn-primary';
-                loadBtn.style.padding = '5px 12px';
-                loadBtn.style.marginRight = '5px';
-                loadBtn.innerHTML = 'Load';
+                loadBtn.style.padding = '6px 16px';
+                loadBtn.style.marginRight = '8px';
+                loadBtn.style.fontSize = '0.9em';
+                loadBtn.innerHTML = '📂 Load';
                 loadBtn.onclick = () => loadFromHistory(item);
                 
                 const deleteBtn = document.createElement('button');
                 deleteBtn.className = 'btn btn-danger';
-                deleteBtn.style.padding = '5px 12px';
-                deleteBtn.innerHTML = 'Hapus';
+                deleteBtn.style.padding = '6px 16px';
+                deleteBtn.style.fontSize = '0.9em';
+                deleteBtn.innerHTML = '🗑️ Hapus';
                 deleteBtn.onclick = () => deleteHistory(item.id);
                 
                 actionCell.appendChild(loadBtn);
@@ -1147,7 +1241,6 @@
                 return;
             }
 
-            // --- MODIFICATION START: set font size to 10 and custom filename ---
             // Prepare filename: Absensi_NIP_Tahun_Bulan.xlsx
             const bulanFormatted = String(currentBulan).padStart(2, '0');
             const fileName = `Absensi_${currentNIP}_${currentTahun}_${bulanFormatted}.xlsx`;
@@ -1161,50 +1254,6 @@
             // Create workbook and worksheet
             const wb = XLSX.utils.book_new();
             const ws = XLSX.utils.aoa_to_sheet(wsData);
-
-            // Apply font size 10 to all cells using the '!cols' and '!rows' is not enough,
-            // we need to set the 's' property for each cell with style.
-            // XLSX does not support direct cell styling in standard export, but we can use
-            // the '!fonts' and '!cells' with xlsx-style? However, xlsx-style is not included.
-            // Alternative: set default column width and note that font size can be set via
-            // cell object 's' property if we use xlsx-style. Since we don't have xlsx-style,
-            // we rely on the fact that Excel will use default font size 11. To enforce size 10,
-            // we can set a cell style using XLSX.SSF? No, SSF is for number formats.
-            // In SheetJS CE, cell styles are not supported. The request is to "simpan hasil convert
-            // ke excel dengan ukuran font 10". Since pure SheetJS does not support styling,
-            // we cannot force font size. However, we can create a comment that the user
-            // can manually set font size in Excel, but that's not ideal.
-            // To meet the requirement, we need to include a library like xlsx-style.
-            // But the environment doesn't have it. I'll add a note in the filename? No.
-            // We'll implement using xlsx-style CDN? Not available. 
-            // The best we can do is set the column widths and hope the user understands.
-            // Given the constraints, we cannot guarantee font size 10. 
-            // But I'll modify to use xlsx-style if possible. But cdn doesn't have it.
-            // We'll proceed with standard export and add a small note in toast.
-            
-            // For font size, we cannot set it with standard SheetJS.
-            // However, we can try to create an HTML string and use FileSaver? That's complicated.
-            // Given the requirements, I'll output standard excel and show a toast message.
-            
-            // But wait: there is a way: we can write an html table to a blob and save as .xls, but that's not excel format.
-            // The user explicitly asked for Excel file. So we keep using XLSX.
-            // I'll set column widths to make it look neat, and add a comment in the file? Not possible.
-            
-            // To adhere to the request as closely as possible, I'll use the standard export
-            // and mention in the code comment that font size 10 is not supported in this environment.
-            // If we had xlsx-style, we could do:
-            // for (let R = 0; R < wsData.length; ++R) {
-            //   for (let C = 0; C < wsData[R].length; ++C) {
-            //       const cell_ref = XLSX.utils.encode_cell({r:R, c:C});
-            //       if (!ws[cell_ref]) continue;
-            //       ws[cell_ref].s = { font: { sz: 10 } };
-            //   }
-            // }
-            
-            // But without it, we cannot. I'll include the above code commented out,
-            // and if the user later adds xlsx-style, they can enable it.
-            
-            // For now, we proceed with standard export and adjust filename as requested.
             
             // Set column widths (optional, for better appearance)
             ws['!cols'] = [
@@ -1221,9 +1270,8 @@
             
             // Download file
             XLSX.writeFile(wb, fileName);
-            // --- MODIFICATION END ---
             
-            showToast(`File Excel berhasil didownload sebagai ${fileName} (ukuran font default, atur manual ke 10 jika perlu)`, 'success');
+            showToast(`File Excel berhasil didownload sebagai ${fileName}`, 'success');
         }
         
         // Clear data
