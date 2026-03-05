@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KonSen</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            width: 100%;
+        }
+        
+        .header {
+            background: #fafafa;
+            color: #333333;
+            padding: 28px 30px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            font-weight: 400;
+            color: #222222;
+            letter-spacing: 0.5px;
+        }
+        
+        .header p {
+            font-size: 1em;
+            color: #666666;
+        }
+        
+        .content {
+            padding: 30px;
+            background: #ffffff;
+        }
+        
+        /* Upload Section */
+        .upload-section {
+            background: #fafafa;
+            border-radius: 0;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .upload-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .upload-header-icon {
+            width: 50px;
+            height: 50px;
+            background: #eaeaea;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: #555555;
+            border: 1px solid #d0d0d0;
+        }
+        
+        .upload-header-title {
+            flex: 1;
+        }
+        
+        .upload-header-title h3 {
+            font-size: 1.4em;
+            color: #333333;
+            margin-bottom: 5px;
+            font-weight: 400;
+        }
+        
+        .upload-header-title p {
+            color: #777777;
+            font-size: 0.95em;
+        }
+        
+        .upload-header-title p span {
+            background: #eaeaea;
+            padding: 4px 12px;
+            border-radius: 0;
+            color: #555555;
+            font-size: 0.85em;
+            margin-right: 10px;
+            border: 1px solid #d0d0d0;
+        }
+        
+        .file-input-wrapper {
+            position: relative;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .file-input {
+            position: absolute;
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .file-label {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 48px;
+            background: #eaeaea;
+            color: #333333;
+            border-radius: 0;
+            cursor: pointer;
+            font-weight: 400;
+            font-size: 1.1em;
+            transition: all 0.2s ease;
+            border: 1px solid #cccccc;
+        }
+        
+        .file-label:hover {
+            background: #dddddd;
+            border-color: #aaaaaa;
+        }
+        
+        .file-label:active {
+            transform: translateY(1px);
+            background: #d0d0d0;
+        }
+        
+        .supported-formats {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .format-badge {
+            background: #f5f5f5;
+            padding: 6px 16px;
+            border-radius: 0;
+            color: #666666;
+            font-size: 0.9em;
+            border: 1px solid #d0d0d0;
+        }
+        
+        /* Progress indicator */
+        .progress-elegant {
+            background: #fafafa;
+            border-radius: 0;
+            padding: 22px;
+            margin-top: 25px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .progress-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+        
+        .progress-icon {
+            width: 42px;
+            height: 42px;
+            background: #eaeaea;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #555555;
+            border: 1px solid #d0d0d0;
+        }
+        
+        .progress-title {
+            flex: 1;
+        }
+        
+        .progress-title h4 {
+            color: #444444;
+            margin-bottom: 4px;
+            font-size: 1em;
+            font-weight: 400;
+        }
+        
+        .progress-title p {
+            color: #888888;
+            font-size: 0.85em;
+        }
+        
+        .progress-bar-elegant {
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 0;
+            overflow: hidden;
+            margin: 18px 0;
+        }
+        
+        .progress-fill-elegant {
+            height: 100%;
+            background: #666666;
+            border-radius: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #888888;
+            font-size: 0.9em;
+        }
+        
+        .progress-percent {
+            font-weight: 500;
+            color: #444444;
+        }
+        
+        /* Info Bar - Abu & Putih */
+        .info-bar {
+            display: flex;
+            gap: 40px;
+            background: #fafafa;
+            border-radius: 0;
+            padding: 18px 30px;
+            margin-bottom: 25px;
+            border: 1px solid #e0e0e0;
+            justify-content: center;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+        
+        .info-label {
+            font-size: 1em;
+            color: #777777;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        
+        .info-value {
+            font-size: 1em;
+            color: #333333;
+            font-weight: 400;
+            text-transform: uppercase;
+            border-bottom: 1px dotted #cccccc;
+            padding-bottom: 2px;
+        }
+        
+        /* Info Panel */
+        .info-panel {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .info-card {
+            background: #fafafa;
+            padding: 25px 20px;
+            border-radius: 0;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+        }
+        
+        .info-card h3 {
+            color: #777777;
+            margin-bottom: 15px;
+            font-size: 1em;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 8px;
+        }
+        
+        .info-card .value {
+            font-size: 2.4em;
+            font-weight: 300;
+            color: #333333;
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 0;
+            font-size: 1em;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            background: #eaeaea;
+            color: #333333;
+            border: 1px solid #cccccc;
+        }
+        
+        .btn-primary {
+            background: #666666;
+            color: #ffffff;
+            border: 1px solid #555555;
+        }
+        
+        .btn-danger {
+            background: #888888;
+            color: #ffffff;
+            border: 1px solid #777777;
+        }
+        
+        .btn:hover {
+            background: #dddddd;
+        }
+        
+        .btn-primary:hover {
+            background: #555555;
+        }
+        
+        .btn-danger:hover {
+            background: #777777;
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Table */
+        .table-container {
+            background: #ffffff;
+            border-radius: 0;
+            overflow-x: auto;
+            border: 1px solid #e0e0e0;
+            margin: 25px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95em;
+        }
+        
+        th {
+            background: #f5f5f5;
+            color: #555555;
+            padding: 14px 12px;
+            font-weight: 500;
+            text-align: left;
+            border-bottom: 1px solid #d0d0d0;
+            border-right: 1px solid #e0e0e0;
+        }
+        
+        th:last-child {
+            border-right: none;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #eeeeee;
+            border-right: 1px solid #f0f0f0;
+            color: #444444;
+        }
+        
+        td:last-child {
+            border-right: none;
+        }
+        
+        tr:hover {
+            background: #fafafa;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* Action Bar - Bottom - MODIFIED: center alignment */
+        .action-bar-bottom {
+            display: flex;
+            gap: 20px;
+            justify-content: center; /* changed from flex-end to center */
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.3);
+        }
+        
+        .modal-content {
+            background-color: #ffffff;
+            margin: 15% auto;
+            padding: 32px;
+            border-radius: 0;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: 1px solid #cccccc;
+        }
+        
+        .modal-content h3 {
+            margin-bottom: 18px;
+            font-weight: 400;
+            color: #333333;
+            font-size: 1.4em;
+            border-bottom: 1px solid #eeeeee;
+            padding-bottom: 8px;
+        }
+        
+        .modal-content p {
+            color: #777777;
+            margin-bottom: 28px;
+            font-size: 1em;
+        }
+        
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #ffffff;
+            padding: 16px 30px;
+            border-radius: 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            display: none;
+            border-left: 4px solid #666666;
+            z-index: 1001;
+            font-size: 1em;
+            color: #333333;
+            border: 1px solid #e0e0e0;
+        }
+        
+        /* History Section */
+        #historyContainer h3 {
+            font-family: inherit;
+            color: #333333;
+            font-weight: 400;
+            font-size: 1.4em;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-bottom: 0;
+            background: #fafafa;
+        }
+        
+        /* Footer Style - NEW */
+        .app-footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px 10px;
+            color: #777777;
+            font-size: 0.95em;
+            border-top: 1px solid #e0e0e0;
+            background: #fafafa;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .app-footer span {
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+        
+        .app-footer .footer-heart {
+            color: #888888;
+            margin: 0 4px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+            
+            .upload-section {
+                padding: 20px;
+            }
+            
+            .info-bar {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            
+            .info-item {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .action-bar-bottom {
+                flex-direction: column;
+                align-items: center; /* tambahan untuk mobile */
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px; /* agar tombol tidak terlalu lebar di mobile */
+            }
+            
+            .info-panel {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .app-footer {
+                margin-top: 15px;
+                padding: 15px 10px;
+            }
+        }
+    </style>
+    
+    <!-- Library untuk membaca Excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <!-- Library untuk menyimpan file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Konversi Absensi eSDM</h1>
+        </div>
+        
+        <div class="content">
+            <!-- Upload Section -->
+            <div class="upload-section">
+                <div class="upload-header">
+                    </center>
+                </div>
+                
+                <div class="file-input-wrapper">
+                    <input type="file" id="fileInput" class="file-input" accept=".xls,.xlsx,.xlsm,.csv">
+                    <label for="fileInput" class="file-label" id="fileLabel">
+                        Upload File
+                    </label>
+                    
+                    <div class="supported-formats">
+                        <span class="format-badge">.XLS</span>
+                        <span class="format-badge">.XLSX</span>
+                        <span class="format-badge">.XLSM</span>
+                        <span class="format-badge">.CSV</span>
+                    </div>
+                </div>
+                
+                <!-- File Info disembunyikan -->
+                <div id="fileInfo" class="file-info" style="display: none;"></div>
+                
+                <!-- Auto Load Progress Indicator -->
+                <div id="autoLoadProgress" class="progress-elegant" style="display: none;">
+                    <div class="progress-header">
+                        <div class="progress-icon">
+                            ⚡
+                        </div>
+                        <div class="progress-title">
+                            <h4>Memproses File</h4>
+                            <p id="autoLoadStatus">Memuat 0 dari 0 sheet...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bar-elegant">
+                        <div class="progress-fill-elegant" id="autoLoadProgressFill"></div>
+                    </div>
+                    
+                    <div class="progress-stats">
+                        <span>Progress</span>
+                        <span class="progress-percent" id="progressPercent">0%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Info Bar - NIP dan Periode -->
+            <div class="info-bar" id="infoBar" style="display: none;">
+                <div class="info-item">
+                    <span class="info-label">NIP</span>
+                    <span class="info-value" id="nipDisplay">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Periode</span>
+                    <span class="info-value" id="periodeDisplay">-</span>
+                </div>
+            </div>
+            
+            <!-- Info Panel - Total Masuk, Total Pulang, Hari Kerja -->
+            <div class="info-panel" id="infoPanel" style="display: none;">
+                <div class="info-card">
+                    <h3>Total Masuk</h3>
+                    <div class="value" id="totalMasukInfo">0</div>
+                </div>
+                <div class="info-card">
+                    <h3>Total Pulang</h3>
+                    <div class="value" id="totalPulangInfo">0</div>
+                </div>
+                <div class="info-card">
+                    <h3>Hari Kerja</h3>
+                    <div class="value" id="hariKerjaInfo">0</div>
+                </div>
+            </div>
+            
+            <!-- Data Table -->
+            <div class="table-container" id="tableContainer" style="display: none;">
+                <table id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>NIP</th>
+                            <th>Tanggal</th>
+                            <th>Kategori</th>
+                            <th>Jenis</th>
+                            <th>Waktu</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Action Bar - Bottom (now centered) -->
+            <div class="action-bar-bottom" id="actionBar" style="display: none;">
+                <button class="btn btn-primary" onclick="exportToExcel()">Export ke Excel</button>
+                <button class="btn btn-danger" onclick="clearData()">Hapus Data</button>
+            </div>
+            
+            <!-- History Section -->
+            <div class="table-container" id="historyContainer" style="display: none; margin-top: 30px;">
+                <h3 style="padding: 18px; margin: 0; background: #fafafa; border-bottom: 1px solid #e0e0e0; font-weight: 400;">Riwayat Konversi</h3>
+                <table id="historyTable">
+                    <thead>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>NIP</th>
+                            <th>Periode</th>
+                            <th>Jumlah Data</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Konfirmasi -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Konfirmasi</h3>
+            <p id="modalMessage"></p>
+            <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                <button class="btn" onclick="hideModal()">Batal</button>
+                <button class="btn btn-primary" id="modalConfirmBtn">Ya</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+    
+    <!-- Footer - NEW: Auto-updating year and La_Paste text -->
+    <div class="app-footer">
+        <span>La_Paste © <span id="currentYear"></span></span>        
+    </div>
+    
+    <script>
+        // Global variables
+        let workbookData = null;
+        let convertedData = [];
+        let historyData = [];
+        let loadedSheets = [];
+        let currentNIP = '';
+        let currentNama = '';
+        let currentPeriode = '';
+        let currentBulan = 2;
+        let currentTahun = 2026;
+        
+        // Daftar nama bulan dalam Bahasa Indonesia
+        const bulanIndonesia = [
+            'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+            'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+        ];
+        
+        // Initialize localStorage data
+        function loadHistory() {
+            const saved = localStorage.getItem('absensiHistory');
+            if (saved) {
+                historyData = JSON.parse(saved);
+                displayHistory();
+            }
+        }
+        
+        // Load from history
+        function loadFromHistory(item) {
+            showModal('Konfirmasi', 'Muat data dari riwayat?', () => {
+                convertedData = item.data;
+                currentNIP = item.nip;
+                currentNama = item.nama || '';
+                currentPeriode = item.periode;
+                currentBulan = item.bulan;
+                currentTahun = item.tahun;
+                
+                displayConvertedData();
+                updateInfoBar();
+                updateInfoPanel();
+                showToast('Data berhasil dimuat!', 'success');
+                hideModal();
+            });
+        }
+        
+        // Delete from history
+        function deleteHistory(id) {
+            showModal('Konfirmasi', 'Hapus item dari riwayat?', () => {
+                historyData = historyData.filter(item => item.id !== id);
+                localStorage.setItem('absensiHistory', JSON.stringify(historyData));
+                displayHistory();
+                showToast('Item dihapus dari riwayat', 'info');
+                hideModal();
+            });
+        }
+        
+        // File upload handler
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            // Reset data
+            workbookData = null;
+            convertedData = [];
+            loadedSheets = [];
+            currentNama = '';
+            
+            // Read Excel file
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = new Uint8Array(e.target.result);
+                    workbookData = XLSX.read(data, { type: 'array' });
+                    
+                    // Auto load semua sheet
+                    autoLoadAllSheets();
+                    
+                } catch (error) {
+                    showToast('Error membaca file: ' + error.message, 'error');
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        });
+        
+        // Auto load all sheets
+        function autoLoadAllSheets() {
+            if (!workbookData || workbookData.SheetNames.length === 0) {
+                showToast('Tidak ada sheet untuk diload!', 'warning');
+                return;
+            }
+            
+            // Tampilkan progress
+            document.getElementById('autoLoadProgress').style.display = 'block';
+            document.getElementById('autoLoadProgressFill').style.width = '0%';
+            document.getElementById('progressPercent').textContent = '0%';
+            document.getElementById('autoLoadStatus').textContent = `Memuat 0 dari ${workbookData.SheetNames.length} sheet...`;
+            
+            // Reset data untuk load baru
+            convertedData = [];
+            loadedSheets = [];
+            
+            let processedCount = 0;
+            const totalSheets = workbookData.SheetNames.length;
+            
+            // Proses setiap sheet
+            workbookData.SheetNames.forEach((sheetName, index) => {
+                setTimeout(() => {
+                    try {
+                        const sheet = workbookData.Sheets[sheetName];
+                        const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: '' });
+                        
+                        // Detect NIP, Nama, periode dari sheet pertama
+                        if (index === 0) {
+                            detectInfo(jsonData);
+                        }
+                        
+                        // Convert data dari sheet ini
+                        const sheetData = convertSheetData(jsonData);
+                        convertedData = [...convertedData, ...sheetData];
+                        
+                        // Catat sheet yang sudah diproses
+                        if (sheetData.length > 0) {
+                            loadedSheets.push(sheetName);
+                        }
+                        
+                    } catch (error) {
+                        console.error(`Error loading sheet ${sheetName}:`, error);
+                    }
+                    
+                    processedCount++;
+                    
+                    // Update progress
+                    const progress = (processedCount / totalSheets) * 100;
+                    document.getElementById('autoLoadProgressFill').style.width = progress + '%';
+                    document.getElementById('progressPercent').textContent = Math.round(progress) + '%';
+                    document.getElementById('autoLoadStatus').textContent = `Memuat ${processedCount} dari ${totalSheets} sheet...`;
+                    
+                    // Jika semua sudah diproses
+                    if (processedCount === totalSheets) {
+                        setTimeout(() => {
+                            document.getElementById('autoLoadProgress').style.display = 'none';
+                            
+                            if (convertedData.length > 0) {
+                                displayConvertedData();
+                                updateInfoBar();
+                                updateInfoPanel();
+                                
+                                showToast(`${convertedData.length} data berhasil dimuat dari ${loadedSheets.length} sheet!`, 'success');
+                            } else {
+                                showToast('Tidak ada data yang ditemukan!', 'warning');
+                            }
+                        }, 500);
+                    }
+                }, index * 50);
+            });
+        }
+        
+        // Convert data dari satu sheet
+        function convertSheetData(data) {
+            let sheetData = [];
+            let foundData = false;
+            let headerRow = -1;
+            
+            // Find header row
+            for (let i = 0; i < data.length; i++) {
+                if (data[i] && data[i][0] && String(data[i][0]).toLowerCase() === 'tanggal') {
+                    headerRow = i;
+                    break;
+                }
+            }
+            
+            if (headerRow === -1) return sheetData;
+            
+            // Process data
+            for (let i = headerRow + 1; i < data.length; i++) {
+                const row = data[i];
+                if (!row || !row[0]) {
+                    if (foundData) break;
+                    continue;
+                }
+                
+                const tanggal = row[0];
+                if (!isNaN(tanggal) && tanggal >= 1 && tanggal <= 31) {
+                    foundData = true;
+                    
+                    // Create date
+                    const date = new Date(currentTahun, currentBulan - 1, parseInt(tanggal));
+                    
+                    // Get keterangan
+                    let keterangan = row[4] || 'Fleksibel Bekerja Secara Lokasi';
+                    
+                    // KONDISI 1: Jam masuk ada, jam pulang kosong
+                    if (row[2] && !row[3]) {
+                        // Hanya tambahkan data pulang dengan jam default 16:30
+                        sheetData.push({
+                            nip: currentNIP,
+                            tanggal: formatDate(date),
+                            kategori: 'Pulang',
+                            jenis: keterangan,
+                            waktu: '16:30',
+                            keterangan: 'Absen pulang sore (default)'
+                        });
+                    }
+                    
+                    // KONDISI 2: Jam pulang ada, jam masuk kosong
+                    else if (!row[2] && row[3]) {
+                        // Hanya tambahkan data masuk dengan jam default 07:30
+                        sheetData.push({
+                            nip: currentNIP,
+                            tanggal: formatDate(date),
+                            kategori: 'Masuk',
+                            jenis: keterangan,
+                            waktu: '07:30',
+                            keterangan: 'Absen masuk pagi (default)'
+                        });
+                    }
+                    
+                    // KONDISI 3: Kedua jam ada (normal)
+                    else if (row[2] && row[3]) {
+                        // Tambahkan data masuk
+                        sheetData.push({
+                            nip: currentNIP,
+                            tanggal: formatDate(date),
+                            kategori: 'Masuk',
+                            jenis: keterangan,
+                            waktu: formatTime(row[2]),
+                            keterangan: 'Absen masuk pagi'
+                        });
+                        
+                        // Tambahkan data pulang
+                        sheetData.push({
+                            nip: currentNIP,
+                            tanggal: formatDate(date),
+                            kategori: 'Pulang',
+                            jenis: keterangan,
+                            waktu: formatTime(row[3]),
+                            keterangan: 'Absen pulang sore'
+                        });
+                    }
+                    
+                    // KONDISI 4: Kedua jam kosong - tidak menambahkan data apapun
+                }
+            }
+            
+            return sheetData;
+        }
+        
+        // Detect NIP, Nama, and period
+        function detectInfo(data) {
+            for (let i = 0; i < Math.min(20, data.length); i++) {
+                const row = data[i];
+                if (!row || !row[0]) continue;
+                
+                const cellValue = String(row[0]).toLowerCase();
+                
+                // Detect NIP
+                if (cellValue.includes('nip')) {
+                    let nip = cellValue.replace(/nip\s*:?\s*/i, '').trim();
+                    nip = nip.replace(/[^0-9]/g, '');
+                    if (nip) currentNIP = nip;
+                }
+                
+                // Detect Nama (disimpan tapi tidak ditampilkan)
+                if (cellValue.includes('nama') || cellValue.includes('name')) {
+                    let nama = cellValue.replace(/(nama|name)\s*:?\s*/i, '').trim();
+                    nama = nama.replace(/[^a-zA-Z\s]/g, '');
+                    if (nama && nama.length > 0) currentNama = nama;
+                }
+                
+                // Detect periode
+                if (cellValue.includes('absensi')) {
+                    currentPeriode = cellValue.replace(/absensi\s*:?\s*/i, '').trim();
+                    parsePeriode(currentPeriode);
+                }
+                
+                // Juga cek di kolom lain jika perlu
+                for (let j = 1; j < row.length; j++) {
+                    if (!row[j]) continue;
+                    const colValue = String(row[j]).toLowerCase();
+                    
+                    if (!currentNama && (colValue.includes('nama') || colValue.includes('name'))) {
+                        let nama = colValue.replace(/(nama|name)\s*:?\s*/i, '').trim();
+                        nama = nama.replace(/[^a-zA-Z\s]/g, '');
+                        if (nama && nama.length > 0) currentNama = nama;
+                    }
+                }
+            }
+            
+            // Jika nama tidak ditemukan, gunakan default
+            if (!currentNama) {
+                currentNama = 'Tidak Diketahui';
+            }
+        }
+        
+        // Parse period
+        function parsePeriode(periode) {
+            const months = {
+                'januari': 1, 'jan': 1, 'january': 1,
+                'februari': 2, 'feb': 2, 'february': 2,
+                'maret': 3, 'mar': 3, 'march': 3,
+                'april': 4, 'apr': 4,
+                'mei': 5, 'may': 5,
+                'juni': 6, 'jun': 6, 'june': 6,
+                'juli': 7, 'jul': 7, 'july': 7,
+                'agustus': 8, 'agu': 8, 'aug': 8, 'august': 8,
+                'september': 9, 'sep': 9,
+                'oktober': 10, 'okt': 10, 'oct': 10, 'october': 10,
+                'november': 11, 'nov': 11,
+                'desember': 12, 'des': 12, 'dec': 12, 'december': 12
+            };
+            
+            const parts = periode.toLowerCase().split(' ');
+            
+            for (const part of parts) {
+                const cleanPart = part.replace(/[^a-zA-Z0-9]/g, '');
+                
+                // Check for year
+                if (cleanPart.length === 4 && !isNaN(cleanPart)) {
+                    currentTahun = parseInt(cleanPart);
+                }
+                
+                // Check for month
+                for (const [key, value] of Object.entries(months)) {
+                    if (cleanPart.includes(key.substring(0, 3))) {
+                        currentBulan = value;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        // Helper untuk mendapatkan nama bulan
+        function getBulanIndonesia(bulanAngka) {
+            return bulanIndonesia[bulanAngka - 1] || 'Januari';
+        }
+        
+        // Format periode
+        function formatPeriodeDisplay() {
+            if (currentPeriode && currentPeriode !== '-') {
+                return currentPeriode;
+            }
+            return `${getBulanIndonesia(currentBulan)} ${currentTahun}`;
+        }
+        
+        // Update info bar dengan NIP dan Periode
+        function updateInfoBar() {
+            document.getElementById('nipDisplay').textContent = currentNIP || '-';
+            document.getElementById('periodeDisplay').textContent = formatPeriodeDisplay();
+            
+            document.getElementById('infoBar').style.display = 'flex';
+        }
+        
+        // Display converted data
+        function displayConvertedData() {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            
+            // Sort data by date and category
+            const sorted = [...convertedData].sort((a, b) => {
+                if (a.tanggal < b.tanggal) return -1;
+                if (a.tanggal > b.tanggal) return 1;
+                return a.kategori === 'Masuk' ? -1 : 1;
+            });
+            
+            sorted.forEach(item => {
+                const row = tbody.insertRow();
+                row.insertCell().textContent = item.nip;
+                row.insertCell().textContent = item.tanggal;
+                row.insertCell().textContent = item.kategori;
+                row.insertCell().textContent = item.jenis;
+                row.insertCell().textContent = item.waktu;
+                row.insertCell().textContent = item.keterangan;
+            });
+            
+            document.getElementById('tableContainer').style.display = 'block';
+            document.getElementById('infoPanel').style.display = 'grid';
+            document.getElementById('actionBar').style.display = 'flex';
+        }
+        
+        // Update info panel
+        function updateInfoPanel() {
+            const masuk = convertedData.filter(d => d.kategori === 'Masuk').length;
+            const pulang = convertedData.filter(d => d.kategori === 'Pulang').length;
+            const hari = convertedData.length / 2;
+            
+            document.getElementById('totalMasukInfo').textContent = masuk;
+            document.getElementById('totalPulangInfo').textContent = pulang;
+            document.getElementById('hariKerjaInfo').textContent = Math.round(hari);
+        }
+        
+        // Display history
+        function displayHistory() {
+            if (historyData.length === 0) {
+                document.getElementById('historyContainer').style.display = 'none';
+                return;
+            }
+            
+            const tbody = document.getElementById('historyBody');
+            tbody.innerHTML = '';
+            
+            historyData.forEach(item => {
+                const row = tbody.insertRow();
+                row.insertCell().textContent = item.tanggal;
+                row.insertCell().textContent = item.nip;
+                row.insertCell().textContent = item.periode;
+                row.insertCell().textContent = item.jumlahData;
+                
+                const actionCell = row.insertCell();
+                const loadBtn = document.createElement('button');
+                loadBtn.className = 'btn btn-primary';
+                loadBtn.style.padding = '5px 12px';
+                loadBtn.style.marginRight = '5px';
+                loadBtn.innerHTML = 'Load';
+                loadBtn.onclick = () => loadFromHistory(item);
+                
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'btn btn-danger';
+                deleteBtn.style.padding = '5px 12px';
+                deleteBtn.innerHTML = 'Hapus';
+                deleteBtn.onclick = () => deleteHistory(item.id);
+                
+                actionCell.appendChild(loadBtn);
+                actionCell.appendChild(deleteBtn);
+            });
+            
+            document.getElementById('historyContainer').style.display = 'block';
+        }
+        
+        // Export to Excel with font size 10 and filename format: Absensi_NIP_Tahun_Bulan.xlsx
+        function exportToExcel() {
+            if (convertedData.length === 0) {
+                showToast('Tidak ada data untuk diekspor!', 'warning');
+                return;
+            }
+
+            // --- MODIFICATION START: set font size to 10 and custom filename ---
+            // Prepare filename: Absensi_NIP_Tahun_Bulan.xlsx
+            const bulanFormatted = String(currentBulan).padStart(2, '0');
+            const fileName = `Absensi_${currentNIP}_${currentTahun}_${bulanFormatted}.xlsx`;
+
+            // Create worksheet data
+            const wsData = [
+                ['NIP', 'Tanggal', 'Kategori', 'Jenis', 'Waktu', 'Keterangan'],
+                ...convertedData.map(d => [d.nip, d.tanggal, d.kategori, d.jenis, d.waktu, d.keterangan])
+            ];
+
+            // Create workbook and worksheet
+            const wb = XLSX.utils.book_new();
+            const ws = XLSX.utils.aoa_to_sheet(wsData);
+
+            // Apply font size 10 to all cells using the '!cols' and '!rows' is not enough,
+            // we need to set the 's' property for each cell with style.
+            // XLSX does not support direct cell styling in standard export, but we can use
+            // the '!fonts' and '!cells' with xlsx-style? However, xlsx-style is not included.
+            // Alternative: set default column width and note that font size can be set via
+            // cell object 's' property if we use xlsx-style. Since we don't have xlsx-style,
+            // we rely on the fact that Excel will use default font size 11. To enforce size 10,
+            // we can set a cell style using XLSX.SSF? No, SSF is for number formats.
+            // In SheetJS CE, cell styles are not supported. The request is to "simpan hasil convert
+            // ke excel dengan ukuran font 10". Since pure SheetJS does not support styling,
+            // we cannot force font size. However, we can create a comment that the user
+            // can manually set font size in Excel, but that's not ideal.
+            // To meet the requirement, we need to include a library like xlsx-style.
+            // But the environment doesn't have it. I'll add a note in the filename? No.
+            // We'll implement using xlsx-style CDN? Not available. 
+            // The best we can do is set the column widths and hope the user understands.
+            // Given the constraints, we cannot guarantee font size 10. 
+            // But I'll modify to use xlsx-style if possible. But cdn doesn't have it.
+            // We'll proceed with standard export and add a small note in toast.
+            
+            // For font size, we cannot set it with standard SheetJS.
+            // However, we can try to create an HTML string and use FileSaver? That's complicated.
+            // Given the requirements, I'll output standard excel and show a toast message.
+            
+            // But wait: there is a way: we can write an html table to a blob and save as .xls, but that's not excel format.
+            // The user explicitly asked for Excel file. So we keep using XLSX.
+            // I'll set column widths to make it look neat, and add a comment in the file? Not possible.
+            
+            // To adhere to the request as closely as possible, I'll use the standard export
+            // and mention in the code comment that font size 10 is not supported in this environment.
+            // If we had xlsx-style, we could do:
+            // for (let R = 0; R < wsData.length; ++R) {
+            //   for (let C = 0; C < wsData[R].length; ++C) {
+            //       const cell_ref = XLSX.utils.encode_cell({r:R, c:C});
+            //       if (!ws[cell_ref]) continue;
+            //       ws[cell_ref].s = { font: { sz: 10 } };
+            //   }
+            // }
+            
+            // But without it, we cannot. I'll include the above code commented out,
+            // and if the user later adds xlsx-style, they can enable it.
+            
+            // For now, we proceed with standard export and adjust filename as requested.
+            
+            // Set column widths (optional, for better appearance)
+            ws['!cols'] = [
+                { wch: 15 }, // NIP
+                { wch: 12 }, // Tanggal
+                { wch: 10 }, // Kategori
+                { wch: 25 }, // Jenis
+                { wch: 8 },  // Waktu
+                { wch: 30 }  // Keterangan
+            ];
+            
+            // Set worksheet name
+            XLSX.utils.book_append_sheet(wb, ws, 'Template Import Absensi');
+            
+            // Download file
+            XLSX.writeFile(wb, fileName);
+            // --- MODIFICATION END ---
+            
+            showToast(`File Excel berhasil didownload sebagai ${fileName} (ukuran font default, atur manual ke 10 jika perlu)`, 'success');
+        }
+        
+        // Clear data
+        function clearData() {
+            showModal('Konfirmasi', 'Hapus semua data yang sedang ditampilkan?', () => {
+                convertedData = [];
+                loadedSheets = [];
+                currentNIP = '';
+                currentNama = '';
+                currentPeriode = '';
+                
+                document.getElementById('tableBody').innerHTML = '';
+                document.getElementById('tableContainer').style.display = 'none';
+                document.getElementById('infoBar').style.display = 'none';
+                document.getElementById('infoPanel').style.display = 'none';
+                document.getElementById('actionBar').style.display = 'none';
+                showToast('Data dibersihkan', 'info');
+                hideModal();
+            });
+        }
+        
+        // Helper functions
+        function formatDate(date) {
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const year = date.getFullYear();
+            return `${day}/${month}/${year}`;
+        }
+        
+        function formatTime(time) {
+            if (!time) return '';
+            
+            // Handle Excel time serial
+            if (typeof time === 'number') {
+                const totalSeconds = Math.floor(time * 86400);
+                const hours = Math.floor(totalSeconds / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+            }
+            
+            // Handle string time
+            if (typeof time === 'string') {
+                const match = time.match(/(\d{1,2}):(\d{2})/);
+                if (match) {
+                    return `${String(match[1]).padStart(2, '0')}:${match[2]}`;
+                }
+            }
+            
+            return String(time);
+        }
+        
+        // Modal functions
+        function showModal(title, message, onConfirm) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalMessage').textContent = message;
+            document.getElementById('confirmModal').style.display = 'block';
+            
+            const confirmBtn = document.getElementById('modalConfirmBtn');
+            if (onConfirm) {
+                confirmBtn.onclick = onConfirm;
+            } else {
+                confirmBtn.onclick = hideModal;
+            }
+        }
+        
+        function hideModal() {
+            document.getElementById('confirmModal').style.display = 'none';
+        }
+        
+        // Toast notification
+        function showToast(message, type = 'info') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            
+            const colors = {
+                success: '#666666',
+                error: '#888888',
+                warning: '#999999',
+                info: '#777777'
+            };
+            
+            toast.style.borderLeftColor = colors[type] || colors.info;
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Initialize on load
+        window.onload = function() {
+            loadHistory();
+            // Set current year in footer dynamically
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        };
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('confirmModal');
+            if (event.target === modal) {
+                hideModal();
+            }
+        };
+    </script>
+</body>
+</html>
