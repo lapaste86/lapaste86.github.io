@@ -318,6 +318,37 @@
             color: #333333;
         }
         
+        /* Warning Info - Tambahan baru */
+        .warning-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: #fef9e7;
+            border: 1px solid #f0e5c9;
+            border-radius: 8px;
+            padding: 14px 20px;
+            margin: 16px 0 8px 0;
+            color: #8a6d3b;
+            font-size: 0.9em;
+            line-height: 1.5;
+            text-align: center;
+        }
+        
+        .warning-info .icon {
+            font-size: 1.6em;
+            flex-shrink: 0;
+        }
+        
+        .warning-info .message {
+            flex: 1;
+        }
+        
+        .warning-info .message strong {
+            font-weight: 600;
+            color: #6d4c2e;
+        }
+        
         /* Buttons - Abu & Putih */
         .btn {
             padding: 8px 20px;
@@ -567,6 +598,13 @@
                 font-size: 1.4em;
             }
             
+            .warning-info {
+                flex-direction: column;
+                gap: 8px;
+                padding: 12px;
+                font-size: 0.85em;
+            }
+            
             .app-footer {
                 margin-top: 10px;
                 padding: 12px 8px;
@@ -625,9 +663,10 @@
         
         
         <div class="content">
+            <p></p><p></p>
             <!-- Upload Section -->
             <div class="upload-section">
-                   <p></p>           
+                              
                 <div class="file-input-wrapper">
                     <input type="file" id="fileInput" class="file-input" accept=".xls,.xlsx,.xlsm,.csv">
                     <label for="fileInput" class="file-label" id="fileLabel">
@@ -712,6 +751,13 @@
                     <tbody id="tableBody">
                     </tbody>
                 </table>
+            </div>
+            
+            <!-- Warning Info - Tampil setelah data diproses -->
+            <div class="warning-info" id="warningInfo" style="display: none;">
+                    <div class="message">
+                    <strong>Pastikan jam masuk/pulang terisi,</strong> jika ada yang kosong kemungkinan ada lupa untuk check-in/check-out, bisa diperbaiki setelah disimpan.
+                </div>
             </div>
             
             <!-- Action Bar - Bottom -->
@@ -831,6 +877,7 @@
                 displayConvertedData();
                 updateInfoBar();
                 updateInfoPanel();
+                showWarningInfo(); // Tampilkan warning
                 showToast('Data berhasil dimuat!', 'success');
                 hideModal();
             });
@@ -937,6 +984,7 @@
                                 displayConvertedData();
                                 updateInfoBar();
                                 updateInfoPanel();
+                                showWarningInfo(); // Tampilkan warning
                                 
                                 showToast(`${convertedData.length} data berhasil dimuat dari ${loadedSheets.length} sheet!`, 'success');
                             } else {
@@ -946,6 +994,16 @@
                     }
                 }, index * 50);
             });
+        }
+        
+        // Fungsi untuk menampilkan warning info
+        function showWarningInfo() {
+            document.getElementById('warningInfo').style.display = 'flex';
+        }
+        
+        // Fungsi untuk menyembunyikan warning info
+        function hideWarningInfo() {
+            document.getElementById('warningInfo').style.display = 'none';
         }
         
         // Convert data dari satu sheet
@@ -1294,6 +1352,7 @@
                 document.getElementById('infoBar').style.display = 'none';
                 document.getElementById('infoPanel').style.display = 'none';
                 document.getElementById('actionBar').style.display = 'none';
+                hideWarningInfo(); // Sembunyikan warning
                 showToast('Data dibersihkan', 'info');
                 hideModal();
             });
