@@ -280,45 +280,12 @@
             padding-bottom: 2px;
         }
         
-        /* Info Panel */
+        /* Info Panel - DISEMBUNYIKAN */
         .info-panel {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin: 16px 0;
+            display: none;
         }
         
-        .info-card {
-            background: #fafafa;
-            padding: 16px 12px;
-            border-radius: 8px;
-            border: 1px solid #e0e0e0;
-            text-align: center;
-            transition: background 0.2s ease;
-        }
-        
-        .info-card:hover {
-            background: #f5f5f5;
-        }
-        
-        .info-card h3 {
-            color: #777777;
-            margin-bottom: 8px;
-            font-size: 0.75em;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            border-bottom: 1px solid #e0e0e0;
-            padding-bottom: 6px;
-        }
-        
-        .info-card .value {
-            font-size: 1.6em;
-            font-weight: 300;
-            color: #333333;
-        }
-        
-        /* Warning Info - Tambahan baru */
+        /* Warning Info */
         .warning-info {
             display: flex;
             align-items: center;
@@ -585,19 +552,6 @@
                 max-width: 250px;
             }
             
-            .info-panel {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-            
-            .info-card {
-                padding: 12px;
-            }
-            
-            .info-card .value {
-                font-size: 1.4em;
-            }
-            
             .warning-info {
                 flex-direction: column;
                 gap: 8px;
@@ -663,7 +617,6 @@
         
         
         <div class="content">
-            <p></p><p></p>
             <!-- Upload Section -->
             <div class="upload-section">
                               
@@ -687,7 +640,7 @@
                 <!-- Auto Load Progress Indicator -->
                 <div id="autoLoadProgress" class="progress-elegant" style="display: none;">
                     <div class="progress-header">
-                        
+                       
                         <div class="progress-title">
                             <h4>Memproses File</h4>
                             <p id="autoLoadStatus">Memuat 0 dari 0 sheet...</p>
@@ -717,20 +670,9 @@
                 </div>
             </div>
             
-            <!-- Info Panel - Total Masuk, Total Pulang, Hari Kerja -->
+            <!-- Info Panel - DISEMBUNYIKAN (Total Masuk, Total Pulang, Hari Kerja) -->
             <div class="info-panel" id="infoPanel" style="display: none;">
-                <div class="info-card">
-                    <h3>Total Masuk</h3>
-                    <div class="value" id="totalMasukInfo">0</div>
-                </div>
-                <div class="info-card">
-                    <h3>Total Pulang</h3>
-                    <div class="value" id="totalPulangInfo">0</div>
-                </div>
-                <div class="info-card">
-                    <h3>Hari Kerja</h3>
-                    <div class="value" id="hariKerjaInfo">0</div>
-                </div>
+                <!-- Konten disembunyikan melalui CSS -->
             </div>
             
             <!-- Data Table -->
@@ -753,8 +695,8 @@
             
             <!-- Warning Info - Tampil setelah data diproses -->
             <div class="warning-info" id="warningInfo" style="display: none;">
-                    <div class="message">
-                    <strong>Pastikan jam Masuk/Pulang terisi,</strong> jika ada yang kosong kemungkinan ada lupa untuk Check-in/Check-out, Silahkan perbaiki setelah berhasil disimpan.
+                <div class="message">
+                    Pastikan jam Masuk/Pulang terisi, jika ada yang kosong kemungkinan ada lupa untuk Check-in/Check-out. Silahkan perbaiki setelah berhasil di simpan.
                 </div>
             </div>
             
@@ -874,7 +816,6 @@
                 
                 displayConvertedData();
                 updateInfoBar();
-                updateInfoPanel();
                 showWarningInfo(); // Tampilkan warning
                 showToast('Data berhasil dimuat!', 'success');
                 hideModal();
@@ -981,7 +922,6 @@
                             if (convertedData.length > 0) {
                                 displayConvertedData();
                                 updateInfoBar();
-                                updateInfoPanel();
                                 showWarningInfo(); // Tampilkan warning
                                 
                                 showToast(`${convertedData.length} data berhasil dimuat dari ${loadedSheets.length} sheet!`, 'success');
@@ -1241,19 +1181,9 @@
             });
             
             document.getElementById('tableContainer').style.display = 'block';
-            document.getElementById('infoPanel').style.display = 'grid';
+            // Info panel tidak ditampilkan
+            document.getElementById('infoPanel').style.display = 'none';
             document.getElementById('actionBar').style.display = 'flex';
-        }
-        
-        // Update info panel
-        function updateInfoPanel() {
-            const masuk = convertedData.filter(d => d.kategori === 'Masuk').length;
-            const pulang = convertedData.filter(d => d.kategori === 'Pulang').length;
-            const hari = convertedData.length / 2;
-            
-            document.getElementById('totalMasukInfo').textContent = masuk;
-            document.getElementById('totalPulangInfo').textContent = pulang;
-            document.getElementById('hariKerjaInfo').textContent = Math.round(hari);
         }
         
         // Display history
@@ -1431,7 +1361,7 @@
             document.getElementById('currentYear').textContent = new Date().getFullYear();
         };
         
-        // Close modal when clicking outside 
+        // Close modal when clicking outside
         window.onclick = function(event) {
             const modal = document.getElementById('confirmModal');
             if (event.target === modal) {
