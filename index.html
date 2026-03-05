@@ -181,6 +181,16 @@
             background: linear-gradient(135deg, #d69e2e, #b7791f);
         }
 
+        /* Tombol baru untuk Konversi Data Salur */
+        .dalur-button {
+            background: linear-gradient(135deg, #f56565, #c53030);
+            box-shadow: 0 10px 20px -5px rgba(245, 101, 101, 0.5);
+        }
+
+        .dalur-button:hover {
+            background: linear-gradient(135deg, #e53e3e, #9b2c2c);
+        }
+
         .footer-note {
             margin-top: 2rem;
             color: #718096;
@@ -241,16 +251,14 @@
             <i class="fas fa-hand-sparkles"></i>
         </div>
 
-        <!-- Judul Selamat Datang -->
+        <!-- Judul Selamat Datang (akan diupdate dengan sapaan oleh JS) -->
         <h1>Selamat Datang!</h1>
         <div class="subtitle">
             <i class="fas fa-map-pin" style="color: #667eea;"></i> 
             Senang melihat Anda di sini
         </div>
 
-        <!-- Deskripsi singkat -->
-        
-        <!-- GROUP TOMBOL KHUSUS: VerDik dan Absensi eSDM -->
+        <!-- GROUP TOMBOL: VerDik, Absensi eSDM, dan Data Salur -->
         <div class="button-group">
             <!-- Tombol VerDik -->
             <a href="https://lapaste86.github.io/verdik.html" class="custom-button verdik-button" target="_blank" rel="noopener noreferrer">
@@ -262,6 +270,12 @@
             <a href="https://lapaste86.github.io/absensi.html" class="custom-button absen-button" target="_blank" rel="noopener noreferrer">
                 <i class="fas fa-calendar-check"></i> 
                 Konversi Absensi eSDM
+            </a>
+
+            <!-- Tombol Konversi Data Salur (baru) -->
+            <a href="https://lapaste86.github.io/dalur.html" class="custom-button dalur-button" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-database"></i> 
+                Konversi Data Salur
             </a>
         </div>
 
@@ -297,26 +311,14 @@
                 titleElement.innerHTML = `${greeting}!`;
             }
 
-
-
-            // Tambahkan efek klik pada tombol CTA
-            const btn = document.getElementById('cta-button');
-            if(btn) {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    alert('Terima kasih! Website ini adalah demo selamat datang. Anda bisa mengembangkannya lebih lanjut.');
-                });
-            }
-
-            // Peringatan jika link VerDik tidak bisa diakses (sesuai pengecekan)
-            // Ini hanya simulasi notifikasi, karena fetch tidak bisa dilakukan dari browser karena CORS
-            console.log("Catatan: Link VerDik (https://lapaste86.github.io/verdik.html) mengembalikan status 404 berdasarkan pengecekan sebelumnya. Pastikan URL sudah benar.");
-
             // Set tahun otomatis di footer
             const yearSpan = document.getElementById('currentYear');
             if (yearSpan) {
                 yearSpan.textContent = now.getFullYear();
             }
+
+            // Catatan kecil di console (bukan alert)
+            console.log("Catatan: Link VerDik (https://lapaste86.github.io/verdik.html) mengembalikan status 404 berdasarkan pengecekan sebelumnya. Pastikan URL sudah benar.");
         })();
     </script>
 
@@ -327,8 +329,5 @@
             background-size: 50px 50px;
         }
     </style>
-
-    <!-- Catatan kecil untuk user (tampil di browser, bukan sebagai alert) -->
-    
 </body>
 </html>
